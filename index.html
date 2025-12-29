@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon SEO Experiment Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #FF9900 0%, #FF6600 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .timeline {
+            padding: 40px;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .step::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 60px;
+            bottom: -40px;
+            width: 3px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .step:last-child::before {
+            display: none;
+        }
+        
+        .step-number {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            z-index: 1;
+        }
+        
+        .step-content {
+            flex: 1;
+            margin-left: 30px;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .step-content h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        .step-content h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .step-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .step-content li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .example-box {
+            background: white;
+            border-left: 4px solid #FF9900;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .example-box h4 {
+            color: #FF9900;
+            margin-bottom: 10px;
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .comparison-item {
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .old-title {
+            background: #fee;
+            border: 2px solid #fcc;
+        }
+        
+        .new-title {
+            background: #efe;
+            border: 2px solid #cfc;
+        }
+        
+        .comparison-item h5 {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .old-title h5 {
+            color: #c33;
+        }
+        
+        .new-title h5 {
+            color: #3c3;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .badge-success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .badge-warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .badge-danger {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .badge-info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .checklist {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .checklist-item {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .checklist-item label {
+            cursor: pointer;
+            color: #555;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #c7254e;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF9900 0%, #FF6600 100%);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.6);
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            border-top: 3px solid #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .step {
+                flex-direction: column;
+            }
+            
+            .step-content {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+            
+            .step::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Amazon SEO Experiment Guide</h1>
+            <p>Transform Your Slowest Products into Winners in 2 Days</p>
+            <p style="margin-top: 10px; font-size: 1em;">For: LEDSone, DCVoltage, SRM Supplies, Homin GmbH</p>
+        </div>
+        
+        <div class="timeline">
+            <!-- STEP 1 -->
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h2>Identify Your Target Products</h2>
+                    <p style="margin-bottom: 15px;">Find the slowest-selling products that need optimization</p>
+                    
+                    <h3>1.1 Go to Seller Central</h3>
+                    <ul>
+                        <li>Login to your Amazon Seller Central account</li>
+                        <li>Navigate to <strong>Reports → Business Reports</strong></li>
+                        <li>Select <strong>Detail Page Sales and Traffic</strong></li>
+                        <li>Set date range: <strong>Last 30 days</strong></li>
+                    </ul>
+                    
+                    <h3>1.2 Filter & Sort Products</h3>
+                    <ul>
+                        <li>Sort by <strong>Sessions</strong> (lowest to highest)</li>
+                        <li>Look for products with <strong>less than 50 sessions per month</strong></li>
+                        <li>Pick 2-3 products for this experiment</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <h4>📌 Example Products to Choose:</h4>
+                        <ul>
+                            <li>ASIN: B0BGPRXYVF - 12V DC Power Supply (35 sessions/month)</li>
+                            <li>ASIN: B0CRTV9876 - LED Strip Connector (28 sessions/month)</li>
+                            <li>ASIN: B0DNXYZ123 - USB-C Cable 3m (42 sessions/month)</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>1.3 Take Before Screenshots</h3>
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <input type="checkbox" id="screenshot1">
+                            <label for="screenshot1">Screenshot of product listing (title, images, bullet points)</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="screenshot2">
+                            <label for="screenshot2">Screenshot of business report showing current sessions</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="screenshot3">
+                            <label for="screenshot3">Note down current sales (last 7 days)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STEP 2 -->
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h2>Find High-Volume Keywords</h2>
+                    
+                    <h3>2.1 Use Amazon's Search Bar (Free Method)</h3>
+                    <ul>
+                        <li>Open <strong>Amazon.co.uk</strong> in <strong>incognito mode</strong></li>
+                        <li>Type your product category in the search bar</li>
+                        <li>Amazon will show autocomplete suggestions = these are ACTUAL customer searches!</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <h4>🔍 Autocomplete Example:</h4>
+                        <p><strong>Typing:</strong> "12v dc power"</p>
+                        <p><strong>Amazon Shows:</strong></p>
+                        <ul>
+                            <li><span class="badge badge-success">High Volume</span> 12v dc power supply</li>
+                            <li><span class="badge badge-success">High Volume</span> 12v dc power supply 10a</li>
+                            <li><span class="badge badge-warning">Medium Volume</span> 12v dc power adapter</li>
+                            <li><span class="badge badge-info">Good Volume</span> 12v dc power supply for led strips</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>2.2 Analyze Competitor Titles</h3>
+                    <ul>
+                        <li>Search for your main product category</li>
+                        <li>Look at <strong>TOP 10 RESULTS</strong> on page 1</li>
+                        <li>Note which keywords appear in EVERY top seller's title</li>
+                    </ul>
+                    
+                    <div class="table-container">
+                        <table>
+                            <tr>
+                                <th>Position</th>
+                                <th>Title Pattern</th>
+                                <th>Common Keywords</th>
+                            </tr>
+                            <tr>
+                                <td>1-3</td>
+                                <td>"12V DC Power Supply 10A..."</td>
+                                <td>12v, dc, power supply, 10a</td>
+                            </tr>
+                            <tr>
+                                <td>4-7</td>
+                                <td>"Power Supply 12V 10 Amp..."</td>
+                                <td>power supply, 12v, amp</td>
+                            </tr>
+                            <tr>
+                                <td>8-10</td>
+                                <td>"12 Volt DC Adapter 10A..."</td>
+                                <td>12 volt, adapter, dc</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <h3>2.3 Screenshot Your Research</h3>
+                    <ul>
+                        <li>Screenshot autocomplete suggestions</li>
+                        <li>Screenshot top 10 competitor titles</li>
+                        <li>Save in a folder: <code>Amazon_SEO_Experiment/Keywords/</code></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- STEP 3 -->
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h2>Select Target Keywords</h2>
+                    
+                    <h3>3.1 Choose 3-5 Keywords per Product</h3>
+                    <p style="margin-bottom: 15px;">Select keywords based on:</p>
+                    <ul>
+                        <li><strong>Relevance:</strong> Does it describe your product accurately?</li>
+                        <li><strong>Search Volume:</strong> Does it appear in autocomplete?</li>
+                        <li><strong>Competition:</strong> Can you compete with top sellers using this keyword?</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <h4>✅ Good Keywords for ASIN: B0BGPRXYVF</h4>
+                        <div style="margin-top: 15px;">
+                            <span class="badge badge-success">Primary</span> 12v dc power supply 10a<br>
+                            <span class="badge badge-success">Primary</span> 12v dc power supply 10amp<br>
+                            <span class="badge badge-info">Secondary</span> switching power supply 12v<br>
+                            <span class="badge badge-info">Secondary</span> 12v power adapter 10a<br>
+                            <span class="badge badge-warning">Long-tail</span> 12v dc power supply for led strips
+                        </div>
+                    </div>
+                    
+                    <h3>3.2 Keyword Checklist</h3>
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <input type="checkbox" id="keyword1">
+                            <label for="keyword1">Keyword is 3-6 words long (not too short, not too long)</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="keyword2">
+                            <label for="keyword2">Keyword appears in autocomplete suggestions</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="keyword3">
+                            <label for="keyword3">Keyword appears in top competitors' titles</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="keyword4">
+                            <label for="keyword4">Keyword accurately describes your product</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STEP 4 -->
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h2>Rewrite Product Title</h2>
+                    
+                    <h3>4.1 Title Formula (For UK, DE, FR, IT)</h3>
+                    <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <code style="font-size: 1.1em; display: block; padding: 15px; background: #f8f9fa; border-left: 4px solid #667eea;">
+                            [Brand] + [Primary Keyword] + [Key Specs] + [Use Case/Feature]
+                        </code>
+                        <p style="margin-top: 15px; color: #666;">
+                            <strong>Character Limit:</strong> 200 characters (but aim for 150-180 for better visibility)
+                        </p>
+                    </div>
+                    
+                    <h3>4.2 Before vs After Example</h3>
+                    <div class="comparison">
+                        <div class="comparison-item old-title">
+                            <h5>❌ Old Title (Poor)</h5>
+                            <p>"LEDSone Power Supply 12V 10A Adapter"</p>
+                            <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
+                                <strong>Issues:</strong> Missing keywords, too short, no specs
+                            </p>
+                        </div>
+                        <div class="comparison-item new-title">
+                            <h5>✅ New Title (Optimized)</h5>
+                            <p>"LEDSone 12V DC Power Supply 10A, Switching Power Supply Adapter, 120W Universal Power Adaptor for LED Strips, CCTV, Cameras"</p>
+                            <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
+                                <strong>Includes:</strong> Primary keywords, specs, use cases
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <h3>4.3 Title Writing Rules</h3>
+                    <ul>
+                        <li><strong>Front-load keywords:</strong> Most important keywords in first 80 characters</li>
+                        <li><strong>Natural reading:</strong> Must sound natural when read aloud</li>
+                        <li><strong>Include specs:</strong> Voltage, amperage, wattage, dimensions</li>
+                        <li><strong>Add use cases:</strong> What products is it compatible with?</li>
+                        <li><strong>Avoid:</strong> ALL CAPS, excessive punctuation!!!, emoji 🚀</li>
+                    </ul>
+                    
+                    <h3>4.4 Create Your New Titles</h3>
+                    <div class="example-box">
+                        <h4>📝 Product 1: ASIN B0BGPRXYVF</h4>
+                        <p><strong>Old:</strong> LEDSone Power Supply 12V 10A Adapter</p>
+                        <p><strong>New:</strong> LEDSone 12V DC Power Supply 10A, Switching Power Supply Adapter, 120W Universal Power Adaptor for LED Strips, CCTV, Cameras</p>
+                        
+                        <h4 style="margin-top: 20px;">📝 Product 2: ASIN B0CRTV9876</h4>
+                        <p><strong>Old:</strong> LED Strip Connector 4 Pin</p>
+                        <p><strong>New:</strong> LED Strip Connector 4 Pin RGB, Strip Light Connectors for 10mm Wide RGB LED Strips, Easy Click Wire Connectors (10 Pack)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STEP 5 -->
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h2>Update Titles in Seller Central</h2>
+                    
+                    <h3>5.1 Update Process</h3>
+                    <ul>
+                        <li>Go to <strong>Inventory → Manage All Inventory</strong></li>
+                        <li>Find your product ASIN</li>
+                        <li>Click <strong>Edit</strong></li>
+                        <li>Go to <strong>Vital Info</strong> tab</li>
+                        <li>Update the <strong>Product Name</strong> field</li>
+                        <li>Click <strong>Save and Finish</strong></li>
+                    </ul>
+                    
+                    <h3>5.2 Important Notes</h3>
+                    <div style="display: grid; gap: 15px; margin: 20px 0;">
+                        <div style="padding: 15px; background: #fff3cd; border-radius: 8px; border-left: 4px solid #ffc107;">
+                            <strong>⏰ Timing:</strong> Changes take 15-30 minutes to appear on live listing
+                        </div>
+                        <div style="padding: 15px; background: #d1ecf1; border-radius: 8px; border-left: 4px solid #17a2b8;">
+                            <strong>📸 Screenshot:</strong> Take screenshot immediately after saving
+                        </div>
+                        <div style="padding: 15px; background: #f8d7da; border-radius: 8px; border-left: 4px solid #dc3545;">
+                            <strong>⚠️ Warning:</strong> Don't change bullet points or backend keywords yet (only title)
+                        </div>
+                    </div>
+                    
+                    <h3>5.3 Verification Checklist</h3>
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <input type="checkbox" id="verify1">
+                            <label for="verify1">Title saved successfully in Seller Central</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="verify2">
+                            <label for="verify2">Screenshot taken showing new title</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="verify3">
+                            <label for="verify3">Noted exact time of update (e.g., 10:30 AM, 22 Dec 2024)</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="verify4">
+                            <label for="verify4">Verified title appears correctly on live listing (after 30 min)</label>
+                        </div>
+                    </div>
+                    
+                    <h3>5.4 Document Your Changes</h3>
+                    <p style="margin-bottom: 10px;">Create a simple tracking table:</p>
+                    <div class="table-container">
+                        <table>
+                            <tr>
+                                <th>ASIN</th>
+                                <th>Old Title</th>
+                                <th>New Title</th>
+                                <th>Update Time</th>
+                            </tr>
+                            <tr>
+                                <td>B0BGPRXYVF</td>
+                                <td>LEDSone Power Supply 12V...</td>
+                                <td>LEDSone 12V DC Power Supply 10A...</td>
+                                <td>22 Dec 2024, 10:30 AM</td>
+                            </tr>
+                            <tr>
+                                <td>B0CRTV9876</td>
+                                <td>LED Strip Connector 4 Pin</td>
+                                <td>LED Strip Connector 4 Pin RGB...</td>
+                                <td>22 Dec 2024, 10:35 AM</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STEP 6 -->
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <h2>Check Rankings (After 24 Hours)</h2>
+                    
+                    <h3>6.1 Wait Period</h3>
+                    <div style="background: #fff3cd; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #ffc107;">
+                        <strong>⏰ CRITICAL:</strong> Wait exactly <strong>24 hours</strong> before checking rankings!<br>
+                        <span style="font-size: 0.9em; color: #666;">Amazon's indexing system needs time to process your changes.</span>
+                    </div>
+                    
+                    <h3>6.2 How to Check Rankings</h3>
+                    <ul>
+                        <li>Open Amazon.co.uk in <strong>incognito mode</strong></li>
+                        <li>Type exact keyword</li>
+                        <li>Press Enter</li>
+                        <li>Scroll through pages 1, 2, 3</li>
+                        <li>Look for your ASIN</li>
+                    </ul>
+                    
+                    <h3>6.3 Record Results</h3>
+                    <div class="table-container">
+                        <table>
+                            <tr>
+                                <th>ASIN</th>
+                                <th>Keyword</th>
+                                <th>Ranking</th>
+                                <th>Status</th>
+                            </tr>
+                            <tr>
+                                <td>B0BGPRXYVF</td>
+                                <td>12v dc power supply 10a</td>
+                                <td>Page 2, Position 8</td>
+                                <td><span class="badge badge-success">✅ Found</span></td>
+                            </tr>
+                            <tr>
+                                <td>B0BGPRXYVF</td>
+                                <td>12v dc power supply 10amp</td>
+                                <td>Page 1, Position 15</td>
+                                <td><span class="badge badge-success">✅ Found</span></td>
+                            </tr>
+                            <tr>
+                                <td>B0BGPRXYVF</td>
+                                <td>switching power supply</td>
+                                <td>Page 3, Position 5</td>
+                                <td><span class="badge badge-warning">⚠️ Marginal</span></td>
+                            </tr>
+                            <tr style="background: #f0f8ff;">
+                                <td colspan="4" style="text-align: center; padding: 15px;">
+                                    <strong>Result:</strong> 2/3 keywords in top positions = ✅ SUCCESS! Continue monitoring sales.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <h3>6.4 Screenshot Results</h3>
+                    <ul>
+                        <li>Take screenshot of each search result page</li>
+                        <li>Highlight your product in the screenshot</li>
+                        <li>Save as: <code>Ranking_Product1_Keyword1.png</code></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- STEP 7 -->
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-content">
+                    <h2>Final Report & Next Steps</h2>
+                    
+                    <h3>7.1 Success Criteria</h3>
+                    <div style="display: grid; gap: 15px; margin: 20px 0;">
+                        <div style="padding: 15px; background: #d4edda; border-radius: 8px; border-left: 4px solid #28a745;">
+                            <strong>✅ Success:</strong> Product appears in top 3 pages for 2+ keywords
+                        </div>
+                        <div style="padding: 15px; background: #fff3cd; border-radius: 8px; border-left: 4px solid #ffc107;">
+                            <strong>⚠️ Partial Success:</strong> Product appears for 1 keyword only
+                        </div>
+                        <div style="padding: 15px; background: #f8d7da; border-radius: 8px; border-left: 4px solid #dc3545;">
+                            <strong>❌ Failed:</strong> Not found in top 3 pages for any keyword
+                        </div>
+                    </div>
+                    
+                    <h3>7.2 If Success ✅</h3>
+                    <ul>
+                        <li>Monitor sales for next 7 days</li>
+                        <li>If sales improve → Apply same method to other slow SKUs</li>
+                        <li>Share before/after sales data</li>
+                    </ul>
+                    
+                    <h3>7.3 If Failed ❌</h3>
+                    <ul>
+                        <li>Analyze competitor titles in top positions</li>
+                        <li>Find different keyword combinations</li>
+                        <li>Rewrite title again with new keywords</li>
+                        <li>Repeat experiment</li>
+                    </ul>
+                    
+                    <h3>7.4 Final Report Includes:</h3>
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check1">
+                            <label for="check1">All screenshots (Before, Keywords, After, Rankings)</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check2">
+                            <label for="check2">Sales data comparison (Before vs After 7 days)</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check3">
+                            <label for="check3">Keyword performance analysis</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check4">
+                            <label for="check4">Lessons learned & insights</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check5">
+                            <label for="check5">Next products to optimize</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- QUICK CHECKLIST -->
+            <div class="step">
+                <div class="step-number">✓</div>
+                <div class="step-content">
+                    <h2>Quick Action Checklist</h2>
+                    
+                    <div class="checklist">
+                        <h3 style="margin-bottom: 15px;">Day 1 Tasks:</h3>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task1">
+                            <label for="task1">Find 2-3 slowest SKUs from Business Reports</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task2">
+                            <label for="task2">Screenshot sales report</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task3">
+                            <label for="task3">Search categories in incognito mode</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task4">
+                            <label for="task4">Screenshot autocomplete suggestions</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task5">
+                            <label for="task5">Pick top 3 keywords per product</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task6">
+                            <label for="task6">Rewrite titles naturally with keywords</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task7">
+                            <label for="task7">Update titles in Seller Central</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task8">
+                            <label for="task8">Note exact update times</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task9">
+                            <label for="task9">Share Day 1 report with team</label>
+                        </div>
+                        
+                        <h3 style="margin: 30px 0 15px 0;">Day 2 Tasks (After 24 hours):</h3>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task10">
+                            <label for="task10">Wait exactly 24 hours from update</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task11">
+                            <label for="task11">Search all keywords in incognito</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task12">
+                            <label for="task12">Check rankings (top 3 pages)</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task13">
+                            <label for="task13">Screenshot all ranking positions</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task14">
+                            <label for="task14">Create results comparison table</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task15">
+                            <label for="task15">Analyze success/failure reasons</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task16">
+                            <label for="task16">Create final report with all data</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="task17">
+                            <label for="task17">Plan next optimization batch</label>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <a href="#" class="cta-button">🚀 Start Experiment Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <h3>📊 Track Your Progress</h3>
+            <p style="margin-top: 15px;">Expected Timeline: 2 Days | Expected Improvement: 20-50% visibility increase</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Accounts: LEDSone | DCVoltage | SRM | Homin GmbH</p>
+            <p style="margin-top: 20px; font-size: 0.9em;">💡 Pro Tip: Start with products that have at least some sales history for better indexing.</p>
+        </div>
+    </div>
+</body>
+</html>
